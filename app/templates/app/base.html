@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <meta charset="utf-8">
+  <title>PhotoService</title>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <h1><a href="{% url 'app:index' %}">Photo Service</a></h1>
+      <div class="header-menu">
+        <p>Hello <strong>{{ user.username }}</strong></p>
+        <a href="{% url 'app:photos_new' %}">POST</a>
+        <a href="{% url 'app:signup' %}">SignUp</a>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'app:users_detail' request.user.id %}">MyPage</a>
+        <a href="{% url 'app:logout' %}">LogOut</a>
+        {% else %}
+        <a href="{% url 'app:login' %}">LogIn</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    {% for message in messages %}
+    <p class="message-success">{{ message }}</p>
+    {% endfor %}
+    {% block content %}
+    {% endblock %}
+  </div>
+
+</body>
+
+</html>

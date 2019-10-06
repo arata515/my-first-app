@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<h2 class="user-name">@{{ user.username }}</h2>
+
+{% if photos.count != 0 %}
+<p>POST Count:<strong>{{ photos.count }}</strong></p>
+{% else %}
+{% if user == request.user %}
+<p>let's post your photos!!!!</p>
+{% else %}
+<p>@{{ user.username }} has not posted photos yet.</p>
+{% endif %}
+{% endif %}
+
+{% include 'app/photos_list.html' %}
+
+{% endblock %}

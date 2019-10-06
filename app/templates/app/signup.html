@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<h2>User Registration</h2>
+
+<form action="{% url 'app:signup' %}" method="post">{% csrf_token %}
+  <label>UserName</label>
+  {{ form.username }}
+  {{ form.username.errors }}
+  <br>
+  <label>PassWord</label>
+  {{ form.password1 }}
+  {{ form.password1.errors }}
+  <br>
+  <label>PassWord Again</label>
+  {{ form.password2 }}
+  {{ form.password2.errors }}
+  <br>
+  <input type="submit" value="Registration">
+</form>
+
+<p><a href="{% url 'app:login' %}">LogIn</a></p>
+
+{% endblock %}

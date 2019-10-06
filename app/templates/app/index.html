@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+{% if category %}
+<h2>Researching Category : {{ category.title }}</h2>
+{% else %}
+<h2>TOP PAGE</h2>
+{% endif %}
+{% include 'app/photos_list.html' %}
+
+{% endblock %}
